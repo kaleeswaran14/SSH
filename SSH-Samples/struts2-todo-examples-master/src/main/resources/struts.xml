@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.reload" value="true"/>
+<!--     <constant name="struts.convention.classes.reload" value="true" /> -->
+<!--     <constant name="struts.convention.exclude.parentClassLoader" value="false" /> -->
+<!--     <constant name="struts.convention.default.parent.package" value="todo" /> -->
+<!--     <constant name="struts.action.extension" value=",,action"/> -->
+<!--     <constant name="struts.locale" value="de_DE"/> -->
+<!--     <constant name="struts.i18n.encoding" value="UTF-8"/> -->
+
+<!--     <package name="todo" extends="json-default"> -->
+<!--         <interceptors> -->
+<!--             <interceptor name="transaction" class="eu.strutters.example.todo.interceptor.TransactionalInterceptor"/> -->
+
+<!--             <interceptor-stack name="defaultTxStack"> -->
+<!--                 <interceptor-ref name="exception"/> -->
+<!--                 <interceptor-ref name="transaction"/> -->
+<!--                 <interceptor-ref name="servletConfig"/> -->
+<!--                 <interceptor-ref name="i18n"/> -->
+<!--                 <interceptor-ref name="prepare"/> -->
+<!--                 <interceptor-ref name="scopedModelDriven"/> -->
+<!--                 <interceptor-ref name="modelDriven"/> -->
+<!--                 <interceptor-ref name="fileUpload"/> -->
+<!--                 <interceptor-ref name="checkbox"/> -->
+<!--                 <interceptor-ref name="multiselect"/> -->
+<!--                 <interceptor-ref name="staticParams"/> -->
+<!--                 <interceptor-ref name="actionMappingParams"/> -->
+<!--                 <interceptor-ref name="params"> -->
+<!--                     <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
+<!--                 </interceptor-ref> -->
+<!--                 <interceptor-ref name="conversionError"/> -->
+<!--                 <interceptor-ref name="validation"> -->
+<!--                     <param name="excludeMethods">input,back,cancel,browse</param> -->
+<!--                 </interceptor-ref> -->
+<!--                 <interceptor-ref name="workflow"> -->
+<!--                     <param name="excludeMethods">input,back,cancel,browse</param> -->
+<!--                 </interceptor-ref> -->
+<!--                 <interceptor-ref name="debugging"/> -->
+<!--             </interceptor-stack> -->
+
+<!--         </interceptors> -->
+
+<!--         <default-interceptor-ref name="defaultTxStack"/> -->
+<!--     </package> -->
+	<package name="todo" namespace="/"  extends="struts-default, json-default">
+
+<!--             <action name="addCustomerAction"  -->
+<!--                     class="eu.strutters.example.todo.action.CustomerAction" method="addCustomer" > -->
+<!--                 <result name="success">pages/customer.jsp</result> -->
+<!--             </action> -->
+
+            <action name="homePageAction" 
+                    class="eu.strutters.example.todo.action.CustomerAction" method="homePage" >
+                <result name="success">home.jsp</result>
+            </action>
+            
+            <action name="searchCustomerAction" 
+                    class="eu.strutters.example.todo.action.CustomerAction" method="searchCustomer" >
+                <result name="success">users.jsp</result>
+            </action>
+            
+            <action name="addCustomerAction" 
+                    class="eu.strutters.example.todo.action.CustomerAction" method="addCustomer" >
+<!--                 <result name="success">pages/customer.jsp</result> -->
+                <result name="success" type="redirect">/listCustomerAction</result>
+            </action>
+            
+            <action name="listCustomerAction"
+                    class="eu.strutters.example.todo.action.CustomerAction" method="listCustomer" >
+                <result name="success">users.jsp</result>
+            </action>
+            
+            <action name="newCustomerAction"
+                    class="eu.strutters.example.todo.action.CustomerAction" method="newCustomer" >
+                <result name="success">user.jsp</result>
+            </action>
+
+<!-- 		<action name="editCustomerAction" -->
+<!-- 			class="eu.strutters.example.todo.action.CustomerAction" method="editCustomer" > -->
+<!-- 		    <result name="success">pages/customer.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="editCustomerAction"
+			class="eu.strutters.example.todo.action.CustomerAction" method="editCustomer" >
+		    <result name="success">user.jsp</result>
+<!-- 		     <result name="success" type="redirect">/listCustomerAction</result> -->
+		</action>
+		
+		<action name="deleteCustomerAction"
+			class="eu.strutters.example.todo.action.CustomerAction" method="deleteCustomer" >
+<!-- 		    <result name="success">pages/customer.jsp</result> -->
+			<result name="success" type="redirect">/listCustomerAction</result>
+		</action>
+		
+		<action name="customerHomeAction" class="eu.strutters.example.todo.action.CustomerAction" method="customerHome" >
+			<result name="success">user.jsp</result>
+		</action>
+    </package>
+    
+<!--     <package name="example" namespace="/example" extends="struts-default"> -->
+<!--         <action name="HelloWorld" class="example.HelloWorld"> -->
+<!--             <result>/example/HelloWorld.jsp</result> -->
+<!--         </action> -->
+<!--     </package> -->
+    
+<!--        <package name="example" namespace="/" extends="struts-default"> -->
+<!--         <action name="HelloWorld" class="example.HelloWorld"> -->
+<!--             <result>/example/HelloWorld.jsp</result> -->
+<!--         </action> -->
+<!--     </package> -->
+</struts>
